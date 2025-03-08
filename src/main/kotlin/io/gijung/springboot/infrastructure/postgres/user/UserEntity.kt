@@ -1,7 +1,7 @@
 package io.gijung.springboot.infrastructure.postgres.user
 
-import io.gijung.springboot.domain.Role
-import io.gijung.springboot.domain.User
+import io.gijung.springboot.domain.user.Role
+import io.gijung.springboot.domain.user.User
 import jakarta.persistence.*
 import java.time.LocalDateTime
 

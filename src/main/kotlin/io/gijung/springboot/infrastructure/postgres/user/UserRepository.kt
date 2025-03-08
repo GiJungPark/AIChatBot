@@ -2,8 +2,8 @@ package io.gijung.springboot.infrastructure.postgres.user
 
 import io.gijung.springboot.application.out.LoginPort
 import io.gijung.springboot.application.out.SignUpPort
-import io.gijung.springboot.domain.User
-import io.gijung.springboot.domain.UserAccount
+import io.gijung.springboot.domain.user.User
+import io.gijung.springboot.domain.user.UserAccount
 import org.springframework.stereotype.Repository
 
 @Repository

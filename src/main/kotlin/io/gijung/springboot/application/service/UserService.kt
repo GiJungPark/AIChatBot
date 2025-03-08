@@ -4,9 +4,9 @@ import io.gijung.springboot.application.`in`.LoginUseCase
 import io.gijung.springboot.application.`in`.SignUpUseCase
 import io.gijung.springboot.application.out.LoginPort
 import io.gijung.springboot.application.out.SignUpPort
-import io.gijung.springboot.domain.Role
-import io.gijung.springboot.domain.User
-import io.gijung.springboot.domain.UserAccount
+import io.gijung.springboot.domain.user.Role
+import io.gijung.springboot.domain.user.User
+import io.gijung.springboot.domain.user.UserAccount
 import org.springframework.stereotype.Service
 
 @Service

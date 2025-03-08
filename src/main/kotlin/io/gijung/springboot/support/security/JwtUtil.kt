@@ -1,6 +1,6 @@
 package io.gijung.springboot.support.security
 
-import io.gijung.springboot.domain.Role
+import io.gijung.springboot.domain.user.Role
 import io.jsonwebtoken.Claims
 import io.jsonwebtoken.Jwts
 import io.jsonwebtoken.security.Keys
