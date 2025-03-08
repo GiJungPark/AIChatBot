@@ -1,5 +1,5 @@
 package io.gijung.springboot.application.`in`
 
 interface LoginUseCase {
-    fun login(email: String, password: String): String
+    fun accountValidate(email: String, password: String): Boolean
 }

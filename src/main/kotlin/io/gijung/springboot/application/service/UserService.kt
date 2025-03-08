@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service
 @Service
 class UserService(
     private val signUpPort: SignUpPort,
-    private val loginPort: LoginPort
+    private val loginPort: LoginPort,
 ) : SignUpUseCase, LoginUseCase {
     override fun signUp(email: String, password: String, name: String) {
 
@@ -23,15 +23,15 @@ class UserService(
         signUpPort.createUser(user)
     }
 
-    override fun login(email: String, password: String): String {
+    override fun accountValidate(email: String, password: String): Boolean {
 
         val account = UserAccount(email, password)
 
         if (loginPort.existsByEmailAndPassword(account)) {
-            return "토큰"
+            return true
         }
 
-        throw IllegalArgumentException("해당하는 사용자가 없습니다.")
+        return false
     }
 
 }
