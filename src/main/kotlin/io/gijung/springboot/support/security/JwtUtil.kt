@@ -16,17 +16,26 @@ class JwtUtil(
 ) {
     private val secretKey: SecretKey = Keys.hmacShaKeyFor(secretKeyString.toByteArray())
 
-    fun generateToken(email: String, role: Role): String {
+    fun generateToken(userId: String, role: Role): String {
         val now = Date()
         val expiryDate = Date(now.time + expireTime)
 
         return Jwts.builder()
-            .setSubject(email)
+            .setSubject(userId)
             .claim("role", role.name)
             .setIssuedAt(now)
             .setExpiration(expiryDate)
             .signWith(secretKey)
             .compact()
+    }
+
+    fun isTokenValid(token: String): Boolean {
+        return try {
+            val claims = getClaims(token)
+            claims != null && claims.expiration.after(Date())
+        } catch (e: Exception) {
+            false
+        }
     }
 
     fun getClaims(token: String): Claims? {
@@ -39,5 +48,9 @@ class JwtUtil(
         } catch (e: Exception) {
             throw IllegalArgumentException("유효하지 않은 토큰입니다.")
         }
+    }
+
+    fun extractUserId(token: String): Any? {
+        return getClaims(token)?.subject
     }
 }

@@ -16,7 +16,7 @@ class UserRepository(
         jpaRepository.save(userEntity)
     }
 
-    override fun existsByEmailAndPassword(account: UserAccount): Boolean {
-        return jpaRepository.existsByEmailAndPassword(account.email, account.password)
+    override fun findUserIdByEmailAndPassword(account: UserAccount): Long? {
+        return jpaRepository.findUserIdByEmailAndPassword(account.email, account.password)
     }
 }

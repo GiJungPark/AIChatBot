@@ -30,8 +30,8 @@ class UserController(
 
     @PostMapping("/login")
     fun login(@RequestBody request: LoginRequest): ResponseEntity<String> {
-
-        if(loginUseCase.accountValidate(request.email, request.password)) {
+        val userId = loginUseCase.login(email = request.email, password = request.password)
+        if(userId != null) {
             return ResponseEntity.ok().body(jwtUtil.generateToken(request.email, Role.MEMBER))
         }
 

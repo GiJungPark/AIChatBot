@@ -23,15 +23,11 @@ class UserService(
         signUpPort.createUser(user)
     }
 
-    override fun accountValidate(email: String, password: String): Boolean {
+    override fun login(email: String, password: String): Long? {
 
         val account = UserAccount(email, password)
 
-        if (loginPort.existsByEmailAndPassword(account)) {
-            return true
-        }
-
-        return false
+        return loginPort.findUserIdByEmailAndPassword(account)
     }
 
 }

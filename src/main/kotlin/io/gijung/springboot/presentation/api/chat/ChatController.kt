@@ -3,8 +3,8 @@ package io.gijung.springboot.presentation.api.chat
 import io.gijung.springboot.application.service.ChatService
 import io.gijung.springboot.infrastructure.gpt.OpenAiClient
 import io.gijung.springboot.presentation.api.chat.request.ChatRequest
+import jakarta.servlet.http.HttpServletRequest
 import org.springframework.http.MediaType
-import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 import reactor.core.publisher.Flux
 
@@ -12,17 +12,18 @@ import reactor.core.publisher.Flux
 @RestController
 @RequestMapping("/api/v1/chats")
 class ChatController(
-    private val gptClient: OpenAiClient,
     private val chatService: ChatService
 ) {
-
     @PostMapping(produces = [MediaType.TEXT_EVENT_STREAM_VALUE])
     @ResponseBody
-    fun chat(@RequestBody request: ChatRequest): Flux<String> {
+    fun chat(@RequestBody request: ChatRequest, httpRequest: HttpServletRequest): Flux<String> {
+        val userId = httpRequest.getAttribute("userId") as? String
+            ?: throw IllegalStateException("User ID not found")
+
         return if (request.isStreaming) {
-            chatService.saveStreamingChat(request.userId, request.message)
+            chatService.saveStreamingChat(userId.toLong(), request.message)
         } else {
-            chatService.saveChat(request.userId, request.message).flux()
+            chatService.saveChat(userId.toLong(), request.message).flux()
         }
     }
 
