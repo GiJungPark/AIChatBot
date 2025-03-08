@@ -5,7 +5,6 @@ import io.gijung.springboot.domain.user.User
 import jakarta.persistence.*
 import java.time.LocalDateTime
 
-
 @Entity
 @Table(name = "users")
 data class UserEntity(
