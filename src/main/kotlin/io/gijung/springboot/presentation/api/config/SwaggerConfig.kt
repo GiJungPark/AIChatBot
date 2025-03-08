@@ -1,4 +1,4 @@
-package io.gijung.springboot.presentation.api.v1
+package io.gijung.springboot.presentation.api.config
 
 import io.swagger.v3.oas.models.OpenAPI
 import io.swagger.v3.oas.models.info.Info

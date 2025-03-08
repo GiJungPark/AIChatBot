@@ -1,8 +1,8 @@
-package io.gijung.springboot.presentation.api.chat
+package io.gijung.springboot.presentation.api.v1.chat
 
 import io.gijung.springboot.application.service.ChatService
 import io.gijung.springboot.infrastructure.gpt.OpenAiClient
-import io.gijung.springboot.presentation.api.chat.request.ChatRequest
+import io.gijung.springboot.presentation.api.v1.chat.request.ChatRequest
 import jakarta.servlet.http.HttpServletRequest
 import org.springframework.http.MediaType
 import org.springframework.web.bind.annotation.*

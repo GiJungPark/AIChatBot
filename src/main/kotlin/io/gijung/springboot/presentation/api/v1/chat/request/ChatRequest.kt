@@ -1,4 +1,4 @@
-package io.gijung.springboot.presentation.api.chat.request
+package io.gijung.springboot.presentation.api.v1.chat.request
 
 data class ChatRequest (
     val message: String,

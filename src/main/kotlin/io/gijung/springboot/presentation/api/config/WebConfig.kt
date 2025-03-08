@@ -1,4 +1,4 @@
-package io.gijung.springboot.presentation.api
+package io.gijung.springboot.presentation.api.config
 
 import io.gijung.springboot.support.security.JwtInterceptor
 import org.springframework.context.annotation.Configuration
