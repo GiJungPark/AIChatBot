@@ -32,6 +32,7 @@ dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter")
     runtimeOnly("org.postgresql:postgresql")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+    testImplementation("org.assertj:assertj-core:3.24.2")
 }
 
 kotlin {
