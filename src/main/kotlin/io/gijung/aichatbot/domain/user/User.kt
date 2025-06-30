@@ -1,5 +1,6 @@
 package io.gijung.aichatbot.domain.user
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
 import java.util.*
 
 data class User(
@@ -12,9 +13,9 @@ data class User(
     val role: String get() = userProfileEntity.role
     
     companion object {
-        fun create(email: String, password: String, name: String): User {
+        fun create(email: String, password: String, name: String, encoder: BCryptPasswordEncoder): User {
             val userId = UUID.randomUUID().toString()
-            val userAccountEntity = UserAccountEntity(userId, email, password)
+            val userAccountEntity = UserAccountEntity(userId, email, encoder.encode(password))
             val userProfileEntity = UserProfileEntity(userId, name, UserRole.MEMBER.name)
             return User(userAccountEntity, userProfileEntity)
         }
