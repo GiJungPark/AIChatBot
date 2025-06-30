@@ -6,6 +6,7 @@ import io.gijung.aichatbot.exception.exception.AbstractCustomException
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.ExceptionHandler
 import org.springframework.web.bind.annotation.RestControllerAdvice
+import org.springframework.web.bind.support.WebExchangeBindException
 
 @RestControllerAdvice
 class GlobalExceptionHandler {
@@ -13,6 +14,13 @@ class GlobalExceptionHandler {
     @ExceptionHandler(AbstractCustomException::class)
     fun customExceptionHandler(e: AbstractCustomException): ResponseEntity<ErrorResponse> {
         return errorResponse(e.error)
+    }
+
+    @ExceptionHandler(WebExchangeBindException::class)
+    fun webExchangeBindExceptionHandler(e: WebExchangeBindException): ResponseEntity<ErrorResponse> {
+        val error = CustomServerError.VALIDATION_ERROR
+        val message = e.bindingResult.fieldErrors.firstOrNull()?.defaultMessage ?: error.description
+        return errorResponse(error, message)
     }
 
     @ExceptionHandler(RuntimeException::class)
@@ -24,6 +32,12 @@ class GlobalExceptionHandler {
         return ResponseEntity
             .status(customError.httpStatus)
             .body(ErrorResponse.from(customError))
+    }
+
+    private fun errorResponse(customError: CustomError, message: String): ResponseEntity<ErrorResponse> {
+        return ResponseEntity
+            .status(customError.httpStatus)
+            .body(ErrorResponse(code = customError.code, message = message))
     }
 
 }
