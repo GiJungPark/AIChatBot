@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 @RequestMapping("/api/users")
 class UserController(
-    val userService: UserService
+    private val userService: UserService
 ) {
     @PostMapping("/signup")
     fun signUp(@RequestBody @Valid request: SignUpRequest): ResponseEntity<SignUpResponse> {
