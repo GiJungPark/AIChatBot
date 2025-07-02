@@ -6,8 +6,8 @@ import javax.crypto.SecretKey
 
 @ConfigurationProperties(prefix = "jwt")
 data class JwtProperties(
-    private val _secretKey: String,
+    private val secret_key: String,
     val expirationTime: Long,
 ) {
-    val secretKey: SecretKey = Keys.hmacShaKeyFor(_secretKey.toByteArray())
+    val secretKey: SecretKey = Keys.hmacShaKeyFor(secret_key.toByteArray())
 }

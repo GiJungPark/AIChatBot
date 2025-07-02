@@ -11,7 +11,6 @@ data class UserProfileEntity(
     @Id
     val id: String,
     val name: String,
-    val role: String
 ) : BaseEntity() {
-    protected constructor() : this("", "", "")
+    protected constructor() : this("", "")
 }

@@ -9,21 +9,21 @@ data class User(
 ) {
     val id: String get() = userAccountEntity.id
     val email: String get() = userAccountEntity.email
+    val role: String get() = userAccountEntity.role
     val name: String get() = userProfileEntity.name
-    val role: String get() = userProfileEntity.role
-    
+
     companion object {
         fun create(email: String, password: String, name: String, encoder: BCryptPasswordEncoder): User {
             val userId = UUID.randomUUID().toString()
-            val userAccountEntity = UserAccountEntity(userId, email, encoder.encode(password))
-            val userProfileEntity = UserProfileEntity(userId, name, UserRole.MEMBER.name)
+            val userAccountEntity = UserAccountEntity(userId, email, encoder.encode(password), UserRole.MEMBER.name)
+            val userProfileEntity = UserProfileEntity(userId, name)
             return User(userAccountEntity, userProfileEntity)
         }
         
         fun createAdmin(email: String, password: String, name: String): User {
             val userId = UUID.randomUUID().toString()
-            val userAccountEntity = UserAccountEntity(userId, email, password)
-            val userProfileEntity = UserProfileEntity(userId, name, UserRole.ADMIN.name)
+            val userAccountEntity = UserAccountEntity(userId, email, password, UserRole.ADMIN.name)
+            val userProfileEntity = UserProfileEntity(userId, name)
             return User(userAccountEntity, userProfileEntity)
         }
     }
