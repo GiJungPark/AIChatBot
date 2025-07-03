@@ -12,14 +12,14 @@ import io.gijung.aichatbot.exception.exception.CustomUserException
 import io.gijung.aichatbot.repository.UserAccountRepository
 import io.gijung.aichatbot.repository.UserProfileRepository
 import jakarta.transaction.Transactional
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
+import org.springframework.security.crypto.password.PasswordEncoder
 import org.springframework.stereotype.Service
 
 @Service
 class UserService(
     private val userAccountRepository: UserAccountRepository,
     private val userProfileRepository: UserProfileRepository,
-    private val bCryptPasswordEncoder: BCryptPasswordEncoder,
+    private val bCryptPasswordEncoder: PasswordEncoder,
     private val jwtGenerator: JwtGenerator
 ) {
 
