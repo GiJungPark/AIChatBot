@@ -1,5 +1,6 @@
 package io.gijung.aichatbot.controller
 
+import io.gijung.aichatbot.auth.JwtValidator
 import io.gijung.aichatbot.config.SecurityConfig
 import io.gijung.aichatbot.controller.request.LoginRequest
 import io.gijung.aichatbot.controller.request.SignUpRequest
@@ -15,7 +16,7 @@ import org.springframework.test.context.bean.override.mockito.MockitoBean
 import org.springframework.test.web.reactive.server.WebTestClient
 
 @WebFluxTest(UserController::class)
-@Import(SecurityConfig::class)
+@Import(NoSecurityConfig::class)
 class UserControllerTest {
 
     @Autowired
@@ -23,6 +24,9 @@ class UserControllerTest {
 
     @MockitoBean
     lateinit var userService: UserService
+
+    @MockitoBean
+    lateinit var jwtValidator: JwtValidator
 
     @Test
     fun `회원가입 요청이 유효하면 201 Created를 반환한다`() {
