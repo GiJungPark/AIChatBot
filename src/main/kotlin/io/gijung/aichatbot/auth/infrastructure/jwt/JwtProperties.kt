@@ -1,4 +1,4 @@
-package io.gijung.aichatbot.config
+package io.gijung.aichatbot.auth.infrastructure.jwt
 
 import io.jsonwebtoken.security.Keys
 import org.springframework.boot.context.properties.ConfigurationProperties

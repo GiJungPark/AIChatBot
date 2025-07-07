@@ -1,6 +1,5 @@
-package io.gijung.aichatbot.auth
+package io.gijung.aichatbot.auth.infrastructure.jwt
 
-import io.gijung.aichatbot.config.JwtProperties
 import io.jsonwebtoken.*
 import org.springframework.stereotype.Component
 

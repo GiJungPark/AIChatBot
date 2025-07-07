@@ -1,4 +1,4 @@
-package io.gijung.aichatbot.config
+package io.gijung.aichatbot.auth.infrastructure.jwt
 
 import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.annotation.Configuration

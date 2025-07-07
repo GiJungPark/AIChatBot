@@ -1,4 +1,4 @@
-package io.gijung.aichatbot.auth
+package io.gijung.aichatbot.auth.infrastructure.jwt
 
 import org.springframework.http.HttpHeaders
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken
