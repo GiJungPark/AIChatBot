@@ -1,4 +1,4 @@
-package io.gijung.aichatbot.controller
+package io.gijung.aichatbot.auth.presentation.web
 
 import org.springframework.boot.test.context.TestConfiguration
 import org.springframework.context.annotation.Bean

@@ -1,12 +1,12 @@
-package io.gijung.aichatbot.controller
+package io.gijung.aichatbot.auth.presentation.web
 
-import io.gijung.aichatbot.auth.JwtValidator
-import io.gijung.aichatbot.config.SecurityConfig
-import io.gijung.aichatbot.controller.request.LoginRequest
-import io.gijung.aichatbot.controller.request.SignUpRequest
-import io.gijung.aichatbot.controller.response.LoginResponse
-import io.gijung.aichatbot.service.UserService
-import org.junit.jupiter.api.Test
+import io.gijung.aichatbot.auth.application.port.`in`.LoginCommand
+import io.gijung.aichatbot.auth.application.port.`in`.SignUpCommand
+import io.gijung.aichatbot.auth.application.service.AuthService
+import io.gijung.aichatbot.auth.domain.model.vo.UserId
+import io.gijung.aichatbot.auth.infrastructure.jwt.JwtValidator
+import io.gijung.aichatbot.auth.presentation.web.request.LoginRequest
+import io.gijung.aichatbot.auth.presentation.web.request.SignUpRequest
 import org.mockito.Mockito.`when`
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.web.reactive.WebFluxTest
@@ -14,34 +14,50 @@ import org.springframework.context.annotation.Import
 import org.springframework.http.MediaType
 import org.springframework.test.context.bean.override.mockito.MockitoBean
 import org.springframework.test.web.reactive.server.WebTestClient
+import kotlin.test.Test
 
-@WebFluxTest(UserController::class)
+@WebFluxTest(AuthController::class)
 @Import(NoSecurityConfig::class)
-class UserControllerTest {
+class AuthControllerTest {
 
     @Autowired
     lateinit var webTestClient: WebTestClient
 
     @MockitoBean
-    lateinit var userService: UserService
+    lateinit var authService: AuthService
 
     @MockitoBean
     lateinit var jwtValidator: JwtValidator
 
     @Test
     fun `회원가입 요청이 유효하면 201 Created를 반환한다`() {
+        val email = "test@example.com"
+        val password = "strongPassword123"
+        val name = "홍길동"
+        val userId = UserId("user-id")
+
         val requestBody = SignUpRequest(
-            email = "test@example.com",
-            password = "strongPassword123",
-            name = "홍길동"
+            email = email,
+            password = password,
+            name = name
         )
 
+        val command = SignUpCommand(
+            email = email,
+            password = password,
+            name = name
+        )
+
+        `when`(authService.signUp(command)).thenReturn(userId)
+
         webTestClient.post()
-            .uri("/api/users/signup")
+            .uri("/api/auth/signup")
             .contentType(MediaType.APPLICATION_JSON)
             .bodyValue(requestBody)
             .exchange()
             .expectStatus().isCreated
+            .expectBody()
+            .jsonPath("$.id").isEqualTo(userId.value)
     }
 
     @Test
@@ -53,7 +69,7 @@ class UserControllerTest {
         )
 
         webTestClient.post()
-            .uri("/api/users/signup")
+            .uri("/api/auth/signup")
             .contentType(MediaType.APPLICATION_JSON)
             .bodyValue(requestBody)
             .exchange()
@@ -72,7 +88,7 @@ class UserControllerTest {
         )
 
         webTestClient.post()
-            .uri("/api/users/signup")
+            .uri("/api/auth/signup")
             .contentType(MediaType.APPLICATION_JSON)
             .bodyValue(requestBody)
             .exchange()
@@ -91,7 +107,7 @@ class UserControllerTest {
         )
 
         webTestClient.post()
-            .uri("/api/users/signup")
+            .uri("/api/auth/signup")
             .contentType(MediaType.APPLICATION_JSON)
             .bodyValue(requestBody)
             .exchange()
@@ -110,7 +126,7 @@ class UserControllerTest {
         )
 
         webTestClient.post()
-            .uri("/api/users/signup")
+            .uri("/api/auth/signup")
             .contentType(MediaType.APPLICATION_JSON)
             .bodyValue(requestBody)
             .exchange()
@@ -122,25 +138,30 @@ class UserControllerTest {
 
     @Test
     fun `로그인 요청이 유효하면 200 OK와 토큰을 반환한다`() {
+        val email = "test@example.com"
+        val password = "correctPassword"
+        val token = "token"
+
         val requestBody = LoginRequest(
-            email = "test@example.com",
-            password = "correctPassword"
+            email = email,
+            password = password,
         )
 
-        val expectedResponse = LoginResponse(
-            token = "token"
+        val command = LoginCommand(
+            email = email,
+            password = password
         )
 
-        `when`(userService.login(requestBody)).thenReturn(expectedResponse)
+        `when`(authService.login(command)).thenReturn(token)
 
         webTestClient.post()
-            .uri("/api/users/login")
+            .uri("/api/auth/login")
             .contentType(MediaType.APPLICATION_JSON)
             .bodyValue(requestBody)
             .exchange()
             .expectStatus().isOk
             .expectBody()
-            .jsonPath("$.token").isEqualTo("token")
+            .jsonPath("$.token").isEqualTo(token)
     }
 
     @Test
@@ -151,7 +172,7 @@ class UserControllerTest {
         )
 
         webTestClient.post()
-            .uri("/api/users/login")
+            .uri("/api/auth/login")
             .contentType(MediaType.APPLICATION_JSON)
             .bodyValue(request)
             .exchange()
@@ -169,7 +190,7 @@ class UserControllerTest {
         )
 
         webTestClient.post()
-            .uri("/api/users/login")
+            .uri("/api/auth/login")
             .contentType(MediaType.APPLICATION_JSON)
             .bodyValue(request)
             .exchange()
@@ -187,7 +208,7 @@ class UserControllerTest {
         )
 
         webTestClient.post()
-            .uri("/api/users/login")
+            .uri("/api/auth/login")
             .contentType(MediaType.APPLICATION_JSON)
             .bodyValue(request)
             .exchange()
