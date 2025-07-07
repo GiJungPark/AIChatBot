@@ -1,4 +1,4 @@
-package io.gijung.aichatbot.controller.request
+package io.gijung.aichatbot.auth.presentation.web.request
 
 import jakarta.validation.constraints.Email
 import jakarta.validation.constraints.NotBlank
