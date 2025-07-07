@@ -1,5 +1,6 @@
 package io.gijung.aichatbot.auth.infrastructure.persistence
 
+import io.gijung.aichatbot.repository.entity.BaseEntity
 import jakarta.persistence.*
 
 @Entity
@@ -20,7 +21,7 @@ class UserAccountEntity(
 
     @Column(nullable = false)
     val role: String,
-) {
+) : BaseEntity() {
     protected constructor() : this("", "", "", "")
 
     override fun equals(other: Any?): Boolean {
