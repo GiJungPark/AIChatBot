@@ -55,7 +55,7 @@ class AuthService(
         val userAccount = userAccountRepository.findByEmail(Email(command.email))
             ?: throw NotFoundEmailException("Not Exists Email : ${command.email}")
 
-        if (!passwordEncoder.matches(userAccount.password.value, command.password)) {
+        if (!passwordEncoder.matches(command.password, userAccount.password.value)) {
             throw NotMatchPasswordException("Not Match Password, User Id : ${userAccount.id}")
         }
 
