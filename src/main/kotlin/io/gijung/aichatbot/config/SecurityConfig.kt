@@ -30,8 +30,8 @@ class SecurityConfig(
 
             .authorizeExchange {
                 it.pathMatchers(
-                    "/api/users/signup",
-                    "/api/users/login"
+                    "/api/auth/signup",
+                    "/api/auth/login"
                 ).permitAll()
                 it.anyExchange().authenticated()
             }
