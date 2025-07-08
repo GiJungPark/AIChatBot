@@ -3,7 +3,7 @@ package io.gijung.aichatbot.auth.infrastructure.persistence
 import io.gijung.aichatbot.auth.application.port.out.UserAccountRepository
 import io.gijung.aichatbot.auth.domain.model.UserAccount
 import io.gijung.aichatbot.auth.domain.model.vo.Email
-import io.gijung.aichatbot.auth.domain.model.vo.UserId
+import io.gijung.aichatbot.user.domain.modle.vo.UserId
 import org.springframework.stereotype.Repository
 import org.springframework.transaction.annotation.Transactional
 

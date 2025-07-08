@@ -1,4 +1,4 @@
-package io.gijung.aichatbot.auth.domain.exception
+package io.gijung.aichatbot.user.domain.exception
 
 import io.gijung.aichatbot.global.error.code.CustomError
 import org.springframework.http.HttpStatus

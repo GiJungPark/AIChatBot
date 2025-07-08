@@ -1,8 +1,8 @@
-package io.gijung.aichatbot.auth.domain.model.vo
+package io.gijung.aichatbot.user.domain.modle.vo
 
 import com.fasterxml.jackson.annotation.JsonCreator
-import io.gijung.aichatbot.auth.domain.exception.UserIdValidationError
-import io.gijung.aichatbot.auth.domain.exception.UserIdValidationException
+import io.gijung.aichatbot.user.domain.exception.UserIdValidationError
+import io.gijung.aichatbot.user.domain.exception.UserIdValidationException
 
 @JvmInline
 value class UserId private constructor(val value: String) {

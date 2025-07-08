@@ -13,7 +13,7 @@ import io.gijung.aichatbot.auth.application.port.out.UserAccountRepository
 import io.gijung.aichatbot.auth.domain.model.UserAccount
 import io.gijung.aichatbot.auth.domain.model.vo.Email
 import io.gijung.aichatbot.auth.domain.model.vo.Password
-import io.gijung.aichatbot.auth.domain.model.vo.UserId
+import io.gijung.aichatbot.user.domain.modle.vo.UserId
 import io.gijung.aichatbot.auth.domain.policy.PasswordPolicy
 import org.springframework.security.crypto.password.PasswordEncoder
 import org.springframework.stereotype.Service
