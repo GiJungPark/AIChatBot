@@ -1,4 +1,4 @@
-package io.gijung.aichatbot.exception.error
+package io.gijung.aichatbot.global.error.code
 
 import org.springframework.http.HttpStatus
 

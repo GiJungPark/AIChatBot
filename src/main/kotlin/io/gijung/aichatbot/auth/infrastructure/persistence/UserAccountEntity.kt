@@ -1,6 +1,6 @@
 package io.gijung.aichatbot.auth.infrastructure.persistence
 
-import io.gijung.aichatbot.repository.entity.BaseEntity
+import io.gijung.aichatbot.global.entity.BaseEntity
 import jakarta.persistence.*
 
 @Entity

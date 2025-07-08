@@ -1,8 +1,9 @@
-package io.gijung.aichatbot.exception.controller
+package io.gijung.aichatbot.global.error.handler
 
-import io.gijung.aichatbot.exception.error.CustomError
-import io.gijung.aichatbot.exception.error.CustomServerError
-import io.gijung.aichatbot.exception.exception.AbstractCustomException
+import io.gijung.aichatbot.global.error.dto.ErrorResponse
+import io.gijung.aichatbot.global.error.code.CustomError
+import io.gijung.aichatbot.global.error.code.CustomServerError
+import io.gijung.aichatbot.global.error.exception.AbstractCustomException
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.ExceptionHandler
 import org.springframework.web.bind.annotation.RestControllerAdvice

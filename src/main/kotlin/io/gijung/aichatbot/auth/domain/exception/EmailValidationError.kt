@@ -1,6 +1,6 @@
 package io.gijung.aichatbot.auth.domain.exception
 
-import io.gijung.aichatbot.exception.error.CustomError
+import io.gijung.aichatbot.global.error.code.CustomError
 import org.springframework.http.HttpStatus
 
 enum class EmailValidationError(

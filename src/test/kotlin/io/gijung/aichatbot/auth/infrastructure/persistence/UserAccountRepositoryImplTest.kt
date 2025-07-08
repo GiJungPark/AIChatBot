@@ -5,7 +5,7 @@ import io.gijung.aichatbot.auth.domain.model.UserAccount
 import io.gijung.aichatbot.auth.domain.model.vo.Email
 import io.gijung.aichatbot.auth.domain.model.vo.Password
 import io.gijung.aichatbot.auth.domain.model.vo.UserId
-import io.gijung.aichatbot.config.JpaConfig
+import io.gijung.aichatbot.global.config.JpaConfig
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test

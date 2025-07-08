@@ -1,4 +1,4 @@
-package io.gijung.aichatbot.repository.entity
+package io.gijung.aichatbot.global.entity
 
 import jakarta.persistence.Column
 import jakarta.persistence.EntityListeners
