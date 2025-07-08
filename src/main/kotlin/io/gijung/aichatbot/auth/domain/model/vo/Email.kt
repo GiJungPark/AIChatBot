@@ -7,7 +7,7 @@ import io.gijung.aichatbot.auth.domain.exception.EmailValidationException
 @JvmInline
 value class Email private constructor(val value: String) {
     companion object {
-        private val emailRegex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\$".toRegex()
+        private val emailRegex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}$".toRegex()
 
         @JsonCreator
         @JvmStatic
