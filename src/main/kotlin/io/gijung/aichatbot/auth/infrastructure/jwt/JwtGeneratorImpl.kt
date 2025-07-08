@@ -22,9 +22,9 @@ class JwtGeneratorImpl(
 
         return Jwts.builder()
             .setSubject(id.value)
-            .setClaims(claims)
             .setIssuedAt(now)
             .setExpiration(expiry)
+            .claim("role", role.name)
             .signWith(jwtProperties.secretKey, SignatureAlgorithm.HS256)
             .compact()
     }
