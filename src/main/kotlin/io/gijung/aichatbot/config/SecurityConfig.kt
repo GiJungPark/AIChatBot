@@ -1,6 +1,6 @@
 package io.gijung.aichatbot.config
 
-import io.gijung.aichatbot.auth.JwtFilter
+import io.gijung.aichatbot.auth.infrastructure.jwt.JwtFilter
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.security.config.annotation.method.configuration.EnableReactiveMethodSecurity
@@ -30,8 +30,8 @@ class SecurityConfig(
 
             .authorizeExchange {
                 it.pathMatchers(
-                    "/api/users/signup",
-                    "/api/users/login"
+                    "/api/auth/signup",
+                    "/api/auth/login"
                 ).permitAll()
                 it.anyExchange().authenticated()
             }
