@@ -56,7 +56,7 @@ class AuthService(
             ?: throw NotFoundEmailException("Not Exists Email : ${command.email}")
 
         if (!passwordEncoder.matches(command.password, userAccount.password.value)) {
-            throw NotMatchPasswordException("Not Match Password, User Id : ${userAccount.id}")
+            throw NotMatchPasswordException("Not Match Password, User Id : ${userAccount.id.value}")
         }
 
         val tokens = jwtGenerator.generateAccessToken(id = userAccount.id, role = userAccount.role)
