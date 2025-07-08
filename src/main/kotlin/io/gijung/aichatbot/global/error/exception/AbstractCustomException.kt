@@ -1,6 +1,6 @@
-package io.gijung.aichatbot.exception.exception
+package io.gijung.aichatbot.global.error.exception
 
-import io.gijung.aichatbot.exception.error.CustomError
+import io.gijung.aichatbot.global.error.code.CustomError
 
 abstract class AbstractCustomException(
     val error: CustomError,

@@ -1,6 +1,6 @@
-package io.gijung.aichatbot.exception.controller
+package io.gijung.aichatbot.global.error.dto
 
-import io.gijung.aichatbot.exception.error.CustomError
+import io.gijung.aichatbot.global.error.code.CustomError
 
 data class ErrorResponse(
     val code: String,

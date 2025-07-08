@@ -1,6 +1,6 @@
-package io.gijung.aichatbot.exception.exception
+package io.gijung.aichatbot.global.error.exception
 
-import io.gijung.aichatbot.exception.error.CustomUserError
+import io.gijung.aichatbot.global.error.code.CustomUserError
 
 class CustomUserException(error: CustomUserError, message: String) :
     AbstractCustomException(error = error, message = message)

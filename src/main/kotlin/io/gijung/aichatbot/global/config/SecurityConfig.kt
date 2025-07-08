@@ -1,4 +1,4 @@
-package io.gijung.aichatbot.config
+package io.gijung.aichatbot.global.config
 
 import io.gijung.aichatbot.auth.infrastructure.jwt.JwtFilter
 import org.springframework.context.annotation.Bean
