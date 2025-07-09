@@ -1,36 +1,18 @@
 package io.gijung.aichatbot.user.infrastructure.persistence
 
 import io.gijung.aichatbot.global.config.JpaConfig
+import io.gijung.aichatbot.support.PersistenceIntegrationTest
 import io.gijung.aichatbot.user.domain.model.UserProfile
 import io.gijung.aichatbot.user.domain.model.vo.UserId
 import io.gijung.aichatbot.user.domain.model.vo.UserName
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.TestInstance
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest
 import org.springframework.context.annotation.Import
-import org.testcontainers.containers.PostgreSQLContainer
-import org.testcontainers.junit.jupiter.Container
-import org.testcontainers.junit.jupiter.Testcontainers
 
-@Testcontainers
-@DataJpaTest
-@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 @Import(JpaConfig::class, UserProfileRepositoryImpl::class, UserProfileMapper::class)
-@TestInstance(TestInstance.Lifecycle.PER_CLASS)
-class UserProfileRepositoryImplTest {
-
-    companion object {
-        @Container
-        @JvmStatic
-        val postgresContainer: PostgreSQLContainer<*> = PostgreSQLContainer("postgres:16-alpine")
-            .withDatabaseName("testdb")
-            .withUsername("username")
-            .withPassword("password")
-    }
+class UserProfileRepositoryImplTest : PersistenceIntegrationTest() {
 
     @Autowired
     private lateinit var userProfileRepository: UserProfileRepositoryImpl
