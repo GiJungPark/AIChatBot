@@ -4,7 +4,7 @@ import io.gijung.aichatbot.auth.domain.model.UserAccount
 import io.gijung.aichatbot.auth.domain.model.UserRole
 import io.gijung.aichatbot.auth.domain.model.vo.Email
 import io.gijung.aichatbot.auth.domain.model.vo.Password
-import io.gijung.aichatbot.user.domain.modle.vo.UserId
+import io.gijung.aichatbot.user.domain.model.vo.UserId
 import org.springframework.stereotype.Component
 
 @Component

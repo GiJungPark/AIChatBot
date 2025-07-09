@@ -11,7 +11,7 @@ import io.gijung.aichatbot.auth.application.port.out.UserIdGenerator
 import io.gijung.aichatbot.auth.domain.model.UserAccount
 import io.gijung.aichatbot.auth.domain.model.vo.Email
 import io.gijung.aichatbot.auth.domain.model.vo.Password
-import io.gijung.aichatbot.user.domain.modle.vo.UserId
+import io.gijung.aichatbot.user.domain.model.vo.UserId
 import io.gijung.aichatbot.auth.domain.policy.PasswordPolicy
 import org.assertj.core.api.Assertions.assertThat
 import org.assertj.core.api.Assertions.assertThatThrownBy

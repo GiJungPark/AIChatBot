@@ -1,7 +1,7 @@
 package io.gijung.aichatbot.auth.infrastructure.jwt
 
 import io.gijung.aichatbot.auth.domain.model.UserRole
-import io.gijung.aichatbot.user.domain.modle.vo.UserId
+import io.gijung.aichatbot.user.domain.model.vo.UserId
 import io.jsonwebtoken.Jwts
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.BeforeEach

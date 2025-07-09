@@ -1,7 +1,7 @@
 package io.gijung.aichatbot.auth.domain.model.vo
 
 import io.gijung.aichatbot.user.domain.exception.UserIdValidationException
-import io.gijung.aichatbot.user.domain.modle.vo.UserId
+import io.gijung.aichatbot.user.domain.model.vo.UserId
 import org.assertj.core.api.Assertions.assertThat
 import org.assertj.core.api.Assertions.assertThatThrownBy
 import org.junit.jupiter.api.Test
