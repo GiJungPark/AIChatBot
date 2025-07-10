@@ -2,7 +2,7 @@ package io.gijung.aichatbot.auth.domain.model
 
 import io.gijung.aichatbot.auth.domain.model.vo.Email
 import io.gijung.aichatbot.auth.domain.model.vo.Password
-import io.gijung.aichatbot.auth.domain.model.vo.UserId
+import io.gijung.aichatbot.user.domain.model.vo.UserId
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 

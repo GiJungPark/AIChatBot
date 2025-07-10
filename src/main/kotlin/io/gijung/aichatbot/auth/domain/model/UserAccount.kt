@@ -2,7 +2,7 @@ package io.gijung.aichatbot.auth.domain.model
 
 import io.gijung.aichatbot.auth.domain.model.vo.Email
 import io.gijung.aichatbot.auth.domain.model.vo.Password
-import io.gijung.aichatbot.auth.domain.model.vo.UserId
+import io.gijung.aichatbot.user.domain.model.vo.UserId
 
 class UserAccount private constructor(
     val id: UserId,

@@ -11,7 +11,7 @@ import io.gijung.aichatbot.auth.application.port.out.UserIdGenerator
 import io.gijung.aichatbot.auth.domain.model.UserAccount
 import io.gijung.aichatbot.auth.domain.model.vo.Email
 import io.gijung.aichatbot.auth.domain.model.vo.Password
-import io.gijung.aichatbot.auth.domain.model.vo.UserId
+import io.gijung.aichatbot.user.domain.model.vo.UserId
 import io.gijung.aichatbot.auth.domain.policy.PasswordPolicy
 import org.assertj.core.api.Assertions.assertThat
 import org.assertj.core.api.Assertions.assertThatThrownBy
@@ -23,6 +23,7 @@ import org.mockito.Mock
 import org.mockito.Mockito.*
 import org.mockito.junit.jupiter.MockitoExtension
 import org.mockito.kotlin.any
+import org.springframework.context.ApplicationEventPublisher
 import org.springframework.security.crypto.password.PasswordEncoder
 
 @ExtendWith(MockitoExtension::class)
@@ -42,6 +43,9 @@ class AuthServiceTest {
 
     @Mock
     private lateinit var passwordEncoder: PasswordEncoder
+
+    @Mock
+    private lateinit var eventListener: ApplicationEventPublisher
 
     @Mock
     private lateinit var passwordPolicy: PasswordPolicy

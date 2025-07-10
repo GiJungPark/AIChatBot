@@ -11,10 +11,12 @@ import io.gijung.aichatbot.auth.application.port.out.JwtGenerator
 import io.gijung.aichatbot.auth.application.port.out.UserIdGenerator
 import io.gijung.aichatbot.auth.application.port.out.UserAccountRepository
 import io.gijung.aichatbot.auth.domain.model.UserAccount
+import io.gijung.aichatbot.auth.domain.model.event.UserSignUpEvent
 import io.gijung.aichatbot.auth.domain.model.vo.Email
 import io.gijung.aichatbot.auth.domain.model.vo.Password
-import io.gijung.aichatbot.auth.domain.model.vo.UserId
+import io.gijung.aichatbot.user.domain.model.vo.UserId
 import io.gijung.aichatbot.auth.domain.policy.PasswordPolicy
+import org.springframework.context.ApplicationEventPublisher
 import org.springframework.security.crypto.password.PasswordEncoder
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
@@ -26,6 +28,7 @@ class AuthService(
     private val userIdGenerator: UserIdGenerator,
     private val passwordEncoder: PasswordEncoder,
     private val passwordPolicy: PasswordPolicy,
+    private val eventPublisher: ApplicationEventPublisher,
 ) : SignUpUseCase, LoginUseCase {
     @Transactional
     override fun signUp(command: SignUpCommand): UserId {
@@ -45,8 +48,12 @@ class AuthService(
 
         userAccountRepository.save(userAccount)
 
-        // userProfile 저장 이벤트
-        val name = command.name
+        eventPublisher.publishEvent(
+            UserSignUpEvent(
+                id = userId.value,
+                username = command.name
+            )
+        )
 
         return userId
     }

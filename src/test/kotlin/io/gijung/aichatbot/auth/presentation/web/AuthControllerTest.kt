@@ -3,7 +3,7 @@ package io.gijung.aichatbot.auth.presentation.web
 import io.gijung.aichatbot.auth.application.port.`in`.LoginCommand
 import io.gijung.aichatbot.auth.application.port.`in`.SignUpCommand
 import io.gijung.aichatbot.auth.application.service.AuthService
-import io.gijung.aichatbot.auth.domain.model.vo.UserId
+import io.gijung.aichatbot.user.domain.model.vo.UserId
 import io.gijung.aichatbot.auth.infrastructure.jwt.JwtValidator
 import io.gijung.aichatbot.auth.presentation.web.request.LoginRequest
 import io.gijung.aichatbot.auth.presentation.web.request.SignUpRequest
